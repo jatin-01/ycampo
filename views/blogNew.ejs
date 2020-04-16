@@ -1,0 +1,24 @@
+<%-include("./partials/header") %>
+<div class="container set ">
+    <h1 class="display-4 font" style="padding-bottom:60px">CREATE YOUR OWN BLOG</h1>
+    <form action="/ycampo/blog" method="POST">
+        <div class="form-group">
+            <label for="exampleTitle">TITLE</label>
+            <input type="text" class="form-control" id="exampleTitle" aria-describedby="emailHelp" name="titleB">
+        </div>
+        <div class="form-group">
+            <label for="exampleImg">IMG URL:</label>
+            <input type="text" class="form-control"  name="imgB[0]">
+            <input type="text" class="form-control"  name="imgB[1]">
+            <input type="text" class="form-control"  name="imgB[2]">
+            <small id="emailHelp" class="form-text text-muted">It should be img url only.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea">Description</label>
+            <textarea class="form-control" id="exampleTextarea" rows="12" name="descB"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-dark btn-lg ">Submit</button>
+    </form>
+
+</div>
+<%-include("./partials/footer") %>

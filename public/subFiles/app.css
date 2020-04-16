@@ -1,0 +1,147 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+.font {
+	font-family: 'Changa', sans-serif;
+	font-size: 4rem;
+}
+.font2 {
+	font-family: 'Poppins', sans-serif;
+}
+
+.set {
+	margin-top: 5rem;
+}
+
+.carouselHeight {
+	height: 600px;
+}
+hr {
+	width: 400px;
+	margin: 0;
+	margin-bottom: 50px;
+}
+.card-imgSet {
+	height: 20vh;
+	object-fit: cover;
+}
+.card-imgSet2 {
+	height: 35vh;
+	object-fit: cover;
+}
+/* @media (max-width:1200px){
+	#cardp{
+		margin-right:20px;
+	}
+} */
+.imgC {
+	height: 500px;
+	object-fit: cover;
+}
+.box {
+	width: auto;
+	margin-left: 30px;
+}
+#description {
+	background: #daeaff;
+	min-height: 60vh;
+	font-size: 22px;
+	font-weight: 500;
+	padding-top: 100px;
+}
+#desc_icon {
+	font-size: 40px;
+}
+.popularLocation {
+	position: relative;
+	width: 230px;
+	height: 330px;
+}
+.popularLocation img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.popularLocation_text {
+	position: absolute;
+	width: 100%;
+	top: 80%;
+	left: 12%;
+	font-weight: 900;
+	color: white;
+	font-size: 18px;
+}
+.comment_box {
+	background: #e1e4ed;
+}
+.comment_button {
+	padding: 1.0rem;
+	margin-bottom: 12px;
+}
+.amenities {
+	background: #daeaff;
+	min-height: 40vh;
+}
+.calc_box {
+	width: 400px;
+	height: 300px;
+}
+.campground_box {
+	width: 100%;
+	height: 200px;
+	position: relative;
+}
+.campground_box img {
+	height: 100%;
+	width: 250px;
+	object-fit: cover;
+}
+.campground_text {
+	width: 100%;
+}
+/* .blog_content {
+	height: 150vh;
+} */
+.blog_img {
+	width: 100%;
+	height: 60vh;
+	background: red;
+	position: relative;
+}
+.blog_img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.blog_text h1 {
+	font-family: 'Poppins', sans-serif;
+	font-size: 2.5rem;
+}
+.blog_text p {
+	font-family: 'Baloo 2', cursive;
+	font-size: 1.3rem;
+	font-weight: 100;
+}
+.blog_img1 {
+	background: red;
+	height: 450px;
+	width: 100%;
+	position: relative;
+}
+.blog_img1 img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.booking_box {
+	position: relative;
+	width: 100%;
+}
+.booking_box img {
+	width: 200px;
+	object-fit: cover;
+}
+.checked {
+	color: orange;
+}

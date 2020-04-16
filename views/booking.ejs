@@ -1,0 +1,67 @@
+<%-include("./partials/header") %>
+<div class="container set">
+    <h4 class=" text-center font-weight-light w-100 mb-lg-4">You are requesting a booking for <%=camp.title%> </h4>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="booking_box">
+               <div class="row border rounded pt-lg-4 pl-lg-2" style="min-height: 40vh;">
+                   <div class="col-lg-4 ">
+                    <img src="<%=camp.img1%>" alt="" class=" shadow-sm p-1 bg-white rounded ">
+                   </div>
+                   <div class="col-lg-8">
+                       <div class="booking_text">
+                        <h5><%=camp.title%></h5>
+                        <p style="font-size: 14px;">Hosted By -<%=camp.author.username%></p>
+                        <p style="font-size: 14px;"><i class="fas fa-map-marker-alt"></i> <%=camp.city%> , <%=camp.state%></p>
+                        <hr>
+                       </div>
+                   </div>
+                <div class="calculate w-100">
+                    <hr class="w-100 p-0 m-lg-2">
+                    <%if(booking[1].numberOfPeople.nop1 > 0 || booking[1].numberOfPeople.nop2 > 0){%>
+                    <%if(booking[0].qnty > 0){%>
+                        <%if(booking[2].guide1 > 0){%>
+                            <p>(<%=camp.price%> x <%=booking[1].numberOfPeople.nop1%>) + Tent(600) x <%=booking[0].qnty%> + 2000 = <span class="result"></span> </p>                           
+                        <%}else{%>
+                            <p>(<%=camp.price%> x <%=booking[1].numberOfPeople.nop1%>) + Tent(600) x <%=booking[0].qnty%> = <span class="result"></span></p>
+                            <%}%>
+                    <%}else{%>
+                        <%if(booking[2].guide2 > 0){%>
+                        <p>(<%=camp.price%> x <%=booking[1].numberOfPeople.nop2%>)  + 2000 = <span class="result"></span></p>
+                        <%}else{%>
+                        <p>(<%=camp.price%> x <%=booking[1].numberOfPeople.nop2%>) = <span class="result"></span></p>
+                        <%}%>
+                        <%}%>
+                    <%}else{%>
+                        <p class="text-muted">NUMBER OF PEOPLE ARE REQUIRED !!</p>
+                        <%}%>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    calculate(`<%=booking%>`);
+    function calculate(booking) {
+        let num , result;
+        let tent = Number(`<%=booking[0].qnty%>` * 600);
+        if(`<%=booking[1].numberOfPeople.nop1%>` >0){
+            num = Number(`<%=camp.price%>` * `<%=booking[1].numberOfPeople.nop1%>`);
+        } 
+        else{
+            num = Number(`<%=camp.price%>` * `<%=booking[1].numberOfPeople.nop2%>`);
+        }
+        if (`<%=booking[2].guide1%>` > 0) {
+            result = num + tent + Number(`<%=booking[2].guide1%>` * 2000);
+        }else if (`<%=booking[2].guide2%>` > 0) {
+            result = num + tent + Number(`<%=booking[2].guide2%>` * 2000);
+        } else {
+            result = num + tent;
+        }
+        let output = document.querySelector(".result");
+        output.innerHTML = Number(result);
+
+    }
+</script>
+<%-include("./partials/footer") %>

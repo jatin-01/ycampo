@@ -1,0 +1,177 @@
+<%-include("./partials/header") %>
+<div class="container set ">
+    <h1 class="display-4 font" style="padding-bottom:60px">ADD CAMPGROUND</h1>
+    <form action="/ycampo" method="POST">
+        <div class="form-group">
+            <label for="exampleTitle">Title</label>
+            <input type="text" class=" form-control form-control-sm" id="exampleTitle" aria-describedby="emailHelp"
+                name="title">
+        </div>
+        <div class="form-group">
+            <label for="exampleImg1">Img 1</label>
+            <input type="text" class="form-control form-control-sm " placeholder="img1" id="exampleImg1" name="img1">
+        </div>
+        <div class="form-group">
+            <label for="exampleImg2">Img 2</label>
+            <input type="text" class="form-control form-control-sm " placeholder="img2" id="exampleImg2" name="img2">
+        </div>
+        <div class="form-group">
+            <label for="exampleImg3">Img 3</label>
+            <input type="text" class="form-control form-control-sm " placeholder="img3" id="exampleImg3" name="img3">
+            <small id="emailHelp" class="form-text text-muted">It should be img url only.</small>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" name="city">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <input type="text" class="form-control" id="inputState" name="state">
+            </div>
+        </div>        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputKnown">Known For</label>
+                <input type="text" class="form-control" id="inputKnown" name="known">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputActivity">Activities(Climbing,Trekking,Hiking,Wildlife watching,Swimming,Cycling,Campfire,Kayaking,Off-roading,Boating)</label>
+                <input type="text" class="form-control" name="activity[0]">
+                <input type="text" class="form-control" name="activity[1]">
+                <input type="text" class="form-control" name="activity[2]">
+                <input type="text" class="form-control" name="activity[3]">
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputActivity">Other Activities</label>
+            <input type="text" class="form-control" name="otherActivities">
+        </div>
+        <!-- --------------------*******-----CHECKBOXS--------------*******------------------------- -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[one]" value="Drinking water">
+                </div>
+            </div>
+            Drinking water
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input " name="checkbox[two]"
+                        value="Covered area">
+                </div>
+            </div>
+            Covered area
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[three]" value="Shower">
+                </div>
+            </div>
+            Shower
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[four]"
+                        value="Pet allowed">
+                </div>
+            </div>
+            Pet allowed
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[five]"
+                        value="Breakfast included">
+                </div>
+            </div>
+            Breakfast include
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[six]"
+                        value="Barbeque grills">
+                </div>
+            </div>
+            Barbeque grills
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[seven]" value="Wifi">
+                </div>
+            </div>
+            Wifi
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[eight]"
+                        value="Good for groups">
+                </div>
+            </div>
+            Good for groups
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[nine]"
+                        value="Charging points">
+                </div>
+            </div>
+            Charging points
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[ten]" value="Campfire">
+                </div>
+            </div>
+            Campfire
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[eleven]"
+                        value="Toilets">
+                </div>
+            </div>
+            Toilets
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[twelve]"
+                        value="Picnic tables">
+                </div>
+            </div>
+            Picnic tables
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend ">
+                <div class="input-group-text mr-3">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="checkbox[thirteen]"
+                        value="Dinner included">
+                </div>
+            </div>
+            Dinner Included
+        </div>
+        <!-- --------------------*******-----CHECKBOXS- END-------------*******------------------------- -->
+        <div class="form-group">
+            <label for="exampleTextarea">Description</label>
+            <textarea class="form-control" id="exampleTextarea" rows="6" name="desc"></textarea>
+        </div>
+        <div class="form-group">
+        <label for="price">Price :</label>
+        <input type="number" placeholder="Rs." min="1500" step="100" max="4000" name="price"  required>
+        </div>
+        <button type="submit" class="btn btn-outline-dark btn-lg ">Submit</button>
+    </form>
+
+</div>
+<%-include("./partials/footer") %>

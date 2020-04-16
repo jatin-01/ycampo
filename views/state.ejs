@@ -1,0 +1,147 @@
+<%-include("./partials/header") %>
+<div class="container-fluid set">
+    <div class="row " style="display:flex; flex-wrap:wrap;">
+        <div class="col-lg-2">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none; color: black;">
+                                Pricing
+                            </button>
+                        </h2>
+                    </div>
+            
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form action="/ycampo/camp/<%=camp.state%>" method="POST">
+                                <div class="d-block"><input type="radio" name="cost" value="1"> <span>Under 1500</span></div>
+                                <div class="d-block"><input type="radio" name="cost" value="2"> <span>1501-2000</span></div>
+                                <div class="d-block"><input type="radio" name="cost" value="3"> <span>2001-3000</span></div>
+                                <div class="d-block"><input type="radio" name="cost" value="4"> <span>3001+</span></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none; color: black;">
+                                Amenities
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Amenities
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none; color: black;">
+                                Activities
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Activities
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 pr-lg-0">
+            <% camp.forEach(function(item){ %>
+            <%if(item.state==ThisState){%>
+               
+                    <div class="campground_box d-flex justify-content-start border shadow p-2 mb-5 bg-white rounded d-block">
+                        <div class="campground_img">
+                            <img class="img-fluid rounded" src="<%=item.img1%>" alt="">
+                        </div>
+                        <div class="campground_text pl-3">
+                            <h4 class="card-title"><%=item.title%> <span class="float-right d-block d-md-inline"><i
+                                        class="fas fa-rupee-sign"></i><%=item.price%></span></h4>
+                            <p class="card-text"><%=item.desc.substring(0,50)%>....</p>
+                            <p><i class="fas fa-map-marker-alt"></i> <%=item.city%> , <%=item.state%></p>
+                            <a href="/ycampo/<%=item._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                        </div>
+                    </div>
+               
+            <% } %>
+            <% }); %>
+            <%for(key in camp){%>
+                <%for( k in camp[key].activity){%>
+                    <%if(camp[key].activity[k].toUpperCase()==ThisState){%>
+                        <div class="campground_box d-flex justify-content-start border shadow p-2 mb-5 bg-white rounded d-block">
+                            <div class="campground_img">
+                                <img class="img-fluid rounded" src="<%=camp[key].img1%>" alt="">
+                            </div>
+                            <div class="campground_text pl-3">
+                                <h4 class="card-title"><%=camp[key].title%> <span class="float-right"><i
+                                            class="fas fa-rupee-sign"></i><%=camp[key].price%></span></h4>
+                                <p><i class="fas fa-map-marker-alt"></i> <%=camp[key].city%> , <%=camp[key].state%></p>
+                                <%number=camp[key].activity.length%>
+                                <%for(k in camp[key].activity){%>
+                                    <span class="d-none d-lg-inline-block"><%=camp[key].activity[k]%></span>
+                                    <%number--;%>
+                                    <%if(number > 0){%>
+                                        <span>,</span>
+                                    <%}%>
+                                <%}%>
+                                <a href="/ycampo/<%=camp[key]._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                            </div>
+                        </div>
+                        <%}%>
+                <%}%>
+            <%}%>
+        </div>
+        <div class="col-lg-4">
+            <div id="map" style="width: 100%; height: 100vh;">
+                <%if(ThisState=="HIMACHAL PRADESH"){%>
+                    <script>
+                        L.mapbox.accessToken = 'pk.eyJ1IjoiamF0aW5rdW1hcjAxMTAiLCJhIjoiY2s4ZTh1MmF6MDdpbzNsbzA4bDEyeXVoZyJ9.HYvlf_nayigLpKK3u6zfFw';
+                        var map = L.mapbox.map('map')
+                            .setView([32.084206, 77.571167], 9)
+                            .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+                    </script>
+                <%}else if(ThisState=="KARNATAKA"){%>
+                    <script>
+                        L.mapbox.accessToken = 'pk.eyJ1IjoiamF0aW5rdW1hcjAxMTAiLCJhIjoiY2s4ZTh1MmF6MDdpbzNsbzA4bDEyeXVoZyJ9.HYvlf_nayigLpKK3u6zfFw';
+                        var map = L.mapbox.map('map')
+                            .setView([12.972442, 77.580643], 9)
+                            .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+                    </script>
+                <%}else if(ThisState=="TAMIL NADU"){%>
+                    <script>
+                        L.mapbox.accessToken = 'pk.eyJ1IjoiamF0aW5rdW1hcjAxMTAiLCJhIjoiY2s4ZTh1MmF6MDdpbzNsbzA4bDEyeXVoZyJ9.HYvlf_nayigLpKK3u6zfFw';
+                        var map = L.mapbox.map('map')
+                            .setView([11.127123, 78.656891], 9)
+                            .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+                    </script>
+                <%}else if(ThisState=="GOA"){%>
+                    <script>
+                        L.mapbox.accessToken = 'pk.eyJ1IjoiamF0aW5rdW1hcjAxMTAiLCJhIjoiY2s4ZTh1MmF6MDdpbzNsbzA4bDEyeXVoZyJ9.HYvlf_nayigLpKK3u6zfFw';
+                        var map = L.mapbox.map('map')
+                            .setView([15.2993, 74.1240], 9)
+                            .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+                    </script>
+                <%}%>
+            </div>
+        </div>   
+        
+    </div>
+</div>
+<!-- <script>
+    var price_btns=document.querySelectorAll("input[type=radio]");
+    price_btns.forEach(function(btn){
+        btn.addEventListener("click", () => {
+        });
+    })
+</script> -->
+<%-include("./partials/footer") %>
