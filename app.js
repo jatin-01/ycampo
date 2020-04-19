@@ -60,21 +60,47 @@ app.get('/ycampo', (req, res) => {
 				req.flash('error', 'Campground not found');
 				console.log(err);
 			} else {
-				let noMatch;
-				if (camp.length == 0) {
-					noMatch = 'No such campground is found , please try with correct campground name..!!!';
-				}
-				res.render('index', { camp: camp, currentUser: req.user, noMatch: noMatch });
+				Blog.find({ title: regex }, (err, blogs) => {
+					if (err) {
+						console.log(err);
+					} else {
+						let noMatch;
+						let present = true;
+						if (camp.length == 0) {
+							noMatch = 'No such campground is found , please try with correct campground name..!!!';
+						}
+						res.render('index', {
+							camp: camp,
+							currentUser: req.user,
+							noMatch: noMatch,
+							blogs: blogs,
+							present: present
+						});
+					}
+				});
 			}
 		});
 	} else {
-		Camp.find({}, (err, camp) => {
+		present = false;
+		Blog.find({}, function(err, blogs) {
 			if (err) {
-				req.flash('error', 'Campground not found');
 				console.log(err);
 			} else {
-				var noMatch;
-				res.render('index', { camp: camp, currentUser: req.user, noMatch: noMatch });
+				Camp.find({}, (err, camp) => {
+					if (err) {
+						req.flash('error', 'Campground not found');
+						console.log(err);
+					} else {
+						var noMatch;
+						res.render('index', {
+							camp: camp,
+							currentUser: req.user,
+							noMatch: noMatch,
+							blogs: blogs,
+							present: present
+						});
+					}
+				});
 			}
 		});
 	}

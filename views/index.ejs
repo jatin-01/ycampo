@@ -1,10 +1,38 @@
 <%-include("./partials/header") %>
-<div class="container set d-none d-md-block text-center">
-    <div class="container">
-        <% if(noMatch && noMatch!=="undefined"){%>
+
+    <div class="container set">
+        <% if(noMatch && noMatch!=="undefined" && present){%>
         <h3><%=noMatch%></h3>
-        <%}%>
     </div>
+       <%}else if(!noMatch && noMatch!="undefined" && present){%>
+        <div class="row ">
+            <% camp.forEach(function(item){ %>
+            <div class="col-lg-3 col-md-6">
+                <div>
+                    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 16rem;">
+                        <img class="card-img-top card-imgSet" src="<%=item.img1%>" alt="Card image cap">
+                        <div class="card-body px-1">
+                            <div class="container-fluid m-0 p-0">
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <p class="card-title font-weight-bold"><%=item.title%></p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <span><i class="fas fa-rupee-sign"></i><%=item.price%></span>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <p class="card-text"><%=item.desc.substring(0,50)%>....</p>
+                            <a href="/ycampo/<%=item._id%>" class="btn btn-primary">READ MORE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+        <%} else if(!present){%>
+    <div class="container set d-none d-md-block text-center">
     <div id="carouselExampleIndicators" class="carousel slide carouselHeight " data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -154,4 +182,48 @@
             </div>
         </div>
 </div>
+<div class="container set">
+    <h1 class="display-5 font">BLOGS</h1>
+    <hr>
+    <div class="d-flex justify-content-between blog_bigbox ">
+        <%blogs.forEach(function(blog){%>
+        <div class="blog_box shadow p-1  bg-white rounded my-md-5 ">
+           <a href="/ycampo/blog/<%=blog._id%>"><img src="<%=blog.imgB[0]%>" alt=""></a>
+            <div class="blog_textbox">
+                <p><%=blog.titleB%></p>
+            </div>
+        </div>
+        <%});%>
+    </div>
+    
+</div>
+<%}%>
+<script>
+    let scroll= document.querySelector(".blog_bigbox");
+    let isDown=false;
+    let startX;
+    let scrollLeft;
+    scroll.addEventListener("mousedown" , function(e){
+        isDown=true;
+        startX=e.pageX-scroll.offsetLeft;
+        scrollLeft=scroll.scrollLeft;
+    });
+    scroll.addEventListener("mouseleave", function () {
+        isDown=false;
+    });
+    scroll.addEventListener("mouseup", function () {
+        isDown=false;
+    });
+    scroll.addEventListener("mousemove", function (e) {
+        if(!isDown){
+            return;
+        }
+        e.preventDefault();
+        const x=e.pageX - scroll.offsetLeft;
+        const walk=(x - startX)*2 ;
+        console.log(walk);
+        scroll.scrollLeft=scrollLeft-walk;
+    });
+
+</script>
 <%-include("./partials/footer") %>
