@@ -9,10 +9,10 @@ let ycampoSchema = new mongoose.Schema({
 	state: String,
 	city: String,
 	known: String,
-	activity: {},
+	activity: [],
 	otherActivities: String,
 	price: Number,
-	checkbox: {},
+	checkbox: [],
 	comments: [
 		{
 			type: mongoose.Schema.Types.ObjectId,

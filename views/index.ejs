@@ -146,7 +146,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="popularLocation border shadow p-1 mb-5 bg-white rounded ">
-                    <a href="/ycampo/camp/kayaking"><img
+                    <a href="/ycampo/camp/act/kayaking"><img
                             src="https://images.unsplash.com/photo-1555489020-a98a84149129?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1866&q=80" class="rounded"></a>
                     <div class="popularLocation_text .font2">
                         <p>Kayaking</p>
@@ -155,7 +155,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="popularLocation border shadow p-1 mb-5 bg-white rounded">
-                    <a href="/ycampo/camp/hiking"><img
+                    <a href="/ycampo/camp/act/hiking"><img
                             src="https://images.unsplash.com/photo-1476611338391-6f395a0ebc7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80" class="rounded"></a>
                     <div class="popularLocation_text .font2">
                         <p>Hiking</p>
@@ -164,7 +164,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="popularLocation border shadow p-1 mb-5 bg-white rounded">
-                    <a href="/ycampo/camp/cycling"><img
+                    <a href="/ycampo/camp/act/cycling"><img
                             src="https://images.unsplash.com/photo-1534146789009-76ed5060ec70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1906&q=80" class="rounded"></a>
                     <div class="popularLocation_text .font2">
                         <p>Cycling</p>
@@ -173,7 +173,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="popularLocation border shadow p-1 mb-5 bg-white rounded">
-                    <a href="/ycampo/camp/wild life"><img
+                    <a href="/ycampo/camp/act/wildlife watching"><img
                             src="https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-1.2.1&auto=format&fit=crop&w=1900&q=80" class="rounded"></a>
                     <div class="popularLocation_text .font2">
                         <p>Wild Life</p>
@@ -186,7 +186,7 @@
     <h1 class="display-5 font">BLOGS</h1>
     <hr>
     <div class="d-flex justify-content-between blog_bigbox ">
-        <%blogs.forEach(function(blog){%>
+        <%blogs.slice(0,10).forEach(function(blog){%>
         <div class="blog_box shadow p-1  bg-white rounded my-md-5 ">
            <a href="/ycampo/blog/<%=blog._id%>"><img src="<%=blog.imgB[0]%>" alt=""></a>
             <div class="blog_textbox">

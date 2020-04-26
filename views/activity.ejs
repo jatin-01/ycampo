@@ -1,0 +1,161 @@
+<%-include("./partials/header") %>
+<div class="container-fluid set">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none; color: black;">
+                                Pricing
+                            </button>
+                        </h2>
+                    </div>
+            
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form action="/ycampo/camp/act/<%=ThisState%>" method="POST">
+                                <div class="d-block"><input type="radio" name="cost[value]" value="1"> <span>Under 1500</span></div>
+                                <div class="d-block"><input type="radio" name="cost[value]" value="2"> <span>1501-2000</span></div>
+                                <div class="d-block"><input type="radio" name="cost[value]" value="3"> <span>2001-3000</span></div>
+                                <div class="d-block"><input type="radio" name="cost[value]" value="4"> <span>3001+</span></div>
+                                <button>save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <%if(present){%>
+                <%camp.forEach(function(k){%>
+                    <%if( Number(cost.value) == 1 && k.price <= 1500 && k.activity.find(e => e.toUpperCase()== ThisState) ){%>
+                        <div class="campground_box d-flex justify-content-start border shadow p-2 mb-5 bg-white rounded d-block">
+                            <div class="campground_img">
+                                <img class="img-fluid rounded" src="<%=k.img1%>" alt="">
+                            </div>
+                            <div class="campground_text pl-3">
+                                <h4 class="card-title"><%=k.title%> <span class="float-right d-block d-md-inline"><i
+                                            class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
+                                <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <% if (k.rating === 0) { %>
+                                <em>No reviews yet.</em>
+                                <% } else { %>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (k.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 4.5) { %> checked <% } %>"></span>
+                                <% } %>
+                            </div>
+                        </div>
+                    <%}else if( Number(cost.value) == 2 && k.price > 1500 && k.price< 2000 && k.activity.find(e => e.toUpperCase()== ThisState) ){%>
+                        <div class="campground_box d-flex justify-content-start border shadow p-2 mb-5 bg-white rounded d-block">
+                            <div class="campground_img">
+                                <img class="img-fluid rounded" src="<%=k.img1%>" alt="">
+                            </div>
+                            <div class="campground_text pl-3">
+                                <h4 class="card-title"><%=k.title%> <span class="float-right d-block d-md-inline"><i
+                                            class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
+                                <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <% if (k.rating === 0) { %>
+                                <em>No reviews yet.</em>
+                                <% } else { %>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (k.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 4.5) { %> checked <% } %>"></span>
+                                <% } %>
+                            </div>
+                        </div>
+                    <%} else if( Number(cost.value) == 3 && k.price >2000 && k.price < 3000 && k.activity.find(e => e.toUpperCase()== ThisState)){%>
+                        <div class="campground_box d-flex justify-content-start border shadow p-2 mb-5 bg-white rounded d-block">
+                            <div class="campground_img">
+                                <img class="img-fluid rounded" src="<%=k.img1%>" alt="">
+                            </div>
+                            <div class="campground_text pl-3">
+                                <h4 class="card-title"><%=k.title%> <span class="float-right d-block d-md-inline"><i
+                                            class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
+                                <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <% if (k.rating === 0) { %>
+                                <em>No reviews yet.</em>
+                                <% } else { %>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (k.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 4.5) { %> checked <% } %>"></span>
+                                <% } %>
+                            </div>
+                        </div>
+                    <%} else if( Number(cost.value) == 4 && k.price > 3000 && k.activity.find(e => e.toUpperCase()== ThisState) ){%>
+                        <div class="campground_box d-flex justify-content-start border shadow p-2 mb-5 bg-white rounded d-block">
+                            <div class="campground_img">
+                                <img class="img-fluid rounded" src="<%=k.img1%>" alt="">
+                            </div>
+                            <div class="campground_text pl-3">
+                                <h4 class="card-title"><%=k.title%> <span class="float-right d-block d-md-inline"><i
+                                            class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
+                                <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <% if (k.rating === 0) { %>
+                                <em>No reviews yet.</em>
+                                <% } else { %>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (k.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (k.rating > 4.5) { %> checked <% } %>"></span>
+                                <% } %>
+                            </div>
+                        </div>
+                    <%}%>
+                <%});%>
+            <%} else {%>
+                <%for(key in camp){%>
+
+                        <%if(camp[key].activity.find( e => e.toUpperCase() ==ThisState)){%>
+                            <div class="campground_box d-flex justify-content-start border shadow p-2 mb-5 bg-white rounded d-block">
+                                <div class="campground_img">
+                                    <img class="img-fluid rounded" src="<%=camp[key].img1%>" alt="">
+                                </div>
+                                <div class="campground_text pl-3">
+                                    <h4 class="card-title"><%=camp[key].title%> <span class="float-right"><i
+                                    class="fas fa-rupee-sign"></i><%=camp[key].price%></span></h4>
+                                    <p><i class="fas fa-map-marker-alt"></i> <%=camp[key].city%> , <%=camp[key].state%></p>
+                                    <%number=camp[key].activity.length%>
+                                    <%for(k in camp[key].activity){%>
+                                        <span class="d-none d-lg-inline-block"><%=camp[key].activity[k]%></span>
+                                        <%number--;%>
+                                        <%if(number > 0){%>
+                                            <span>,</span>
+                                        <%}%>
+                                    <%}%>
+                                    <a href="/ycampo/<%=camp[key]._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                    <div class="d-block">
+                                        <% if (camp[key].rating === 0) { %>
+                                        <em>No reviews yet.</em>
+                                        <% } else { %>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star <% if (camp[key].rating > 1.5) { %> checked <% } %>"></span>
+                                        <span class="fa fa-star <% if (camp[key].rating > 2.5) { %> checked <% } %>"></span>
+                                        <span class="fa fa-star <% if (camp[key].rating > 3.5) { %> checked <% } %>"></span>
+                                        <span class="fa fa-star <% if (camp[key].rating > 4.5) { %> checked <% } %>"></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        <%}%>
+                <%}%>
+        </div>
+        <%}%>
+</div>
+<%-include("./partials/footer") %>

@@ -105,7 +105,36 @@ app.get('/ycampo', (req, res) => {
 		});
 	}
 });
-//himachal campground route
+//activity campground route
+app.get('/ycampo/camp/act/:state', function(req, res) {
+	let ThisState = req.params.state;
+	ThisState = ThisState.toUpperCase();
+	// console.log(ThisState);
+	Camp.find({}, (err, camp) => {
+		if (err) {
+			req.flash('error', 'Campground not found');
+			console.log(err);
+		} else {
+			res.render('activity', { camp: camp, ThisState: ThisState });
+		}
+	});
+});
+//activity campground route
+app.post('/ycampo/camp/act/:state', function(req, res) {
+	let cost = req.body.cost;
+	// console.log(cost);
+	let ThisState = req.params.state.toUpperCase();
+	let present = true;
+	Camp.find({}, (err, camp) => {
+		if (err) {
+			req.flash('error', 'Campground not found');
+			console.log(err);
+		} else {
+			res.render('activity', { camp: camp, ThisState: ThisState, present: present, cost: cost });
+		}
+	});
+});
+//state campground route
 app.get('/ycampo/camp/:state', function(req, res) {
 	let ThisState = req.params.state;
 	ThisState = ThisState.toUpperCase();
@@ -116,6 +145,21 @@ app.get('/ycampo/camp/:state', function(req, res) {
 			console.log(err);
 		} else {
 			res.render('state', { camp: camp, ThisState: ThisState });
+		}
+	});
+});
+// state campground route
+app.post('/ycampo/camp/:state', function(req, res) {
+	let cost = req.body.cost;
+	// console.log(cost);
+	let ThisState = req.params.state;
+	let present = true;
+	Camp.find({}, (err, camp) => {
+		if (err) {
+			req.flash('error', 'Campground not found');
+			console.log(err);
+		} else {
+			res.render('state', { camp: camp, ThisState: ThisState, present: present, cost: cost });
 		}
 	});
 });
@@ -133,15 +177,17 @@ app.post('/ycampo', isLoggedIn, (req, res) => {
 		desc = req.body.desc,
 		state = req.body.state.toUpperCase(),
 		city = req.body.city,
-		known = req.body.known,
-		otherActivities = req.body.otherActivities,
-		activity = req.body.activity,
-		checkbox = req.body.checkbox,
+		known = req.body.known.toUpperCase(),
+		otherActivities = req.body.otherActivities.toUpperCase(),
+		activity = req.body.activity.map((e) => e.toUpperCase()),
+		checkbox = req.body.checkbox.value.map((e) => e.toUpperCase()),
 		price = req.body.price;
 	let author = {
 		id: req.user._id,
 		username: req.user.username
 	};
+	console.log(activity);
+	console.log(checkbox);
 	Camp.create(
 		{
 			title: title,
@@ -236,7 +282,7 @@ app.put('/ycampo/:id', checkAuthorization, function(req, res) {
 		state = req.body.state.toUpperCase(),
 		city = req.body.city,
 		known = req.body.known,
-		activity = req.body.activity,
+		activity = req.body.activity.map((e) => e.toUpperCase()),
 		price = req.body.price;
 	let author = {
 		id: req.user._id,
