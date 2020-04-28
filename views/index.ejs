@@ -24,7 +24,16 @@
                             </div>
         
                             <p class="card-text"><%=item.desc.substring(0,50)%>....</p>
-                            <a href="/ycampo/<%=item._id%>" class="btn btn-primary">READ MORE</a>
+                            <a href="/ycampo/<%=item._id%>" class="btn btn-primary btn-sm float-right">READ MORE</a>
+                            <% if (item.rating === 0) { %>
+                            <em>No reviews yet.</em>
+                            <% } else { %>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star <% if (item.rating > 1.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (item.rating > 2.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (item.rating > 3.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (item.rating > 4.5) { %> checked <% } %>"></span>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -87,7 +96,16 @@
                         </div>
                         
                         <p class="card-text"><%=item.desc.substring(0,50)%>....</p>
-                        <a href="/ycampo/<%=item._id%>" class="btn btn-primary">READ MORE</a>
+                        <a href="/ycampo/<%=item._id%>" class="btn btn-primary btn-sm float-right">READ MORE</a>
+                        <% if (item.rating === 0) { %>
+                        <em>No reviews yet.</em>
+                        <% } else { %>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star <% if (item.rating > 1.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (item.rating > 2.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (item.rating > 3.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (item.rating > 4.5) { %> checked <% } %>"></span>
+                        <% } %>
                     </div>
                 </div>
             </div>
@@ -187,10 +205,12 @@
     <hr>
     <div class="d-flex justify-content-between blog_bigbox ">
         <%blogs.slice(0,10).forEach(function(blog){%>
-        <div class="blog_box shadow p-1  bg-white rounded my-md-5 ">
+        <div class="blog_box shadow p-1  bg-white rounded  ">
            <a href="/ycampo/blog/<%=blog._id%>"><img src="<%=blog.imgB[0]%>" alt=""></a>
             <div class="blog_textbox">
-                <p><%=blog.titleB%></p>
+                <span class="d-block"><%=blog.titleB%></span>
+                <span class="d-block"><%=blog.descB.substring(0,30)%>...</span>
+                <span class="d-block"><%=blog.createdAt.toDateString()%></span>
             </div>
         </div>
         <%});%>

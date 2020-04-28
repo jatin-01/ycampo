@@ -186,8 +186,8 @@ app.post('/ycampo', isLoggedIn, (req, res) => {
 		id: req.user._id,
 		username: req.user.username
 	};
-	console.log(activity);
-	console.log(checkbox);
+	// console.log(activity);
+	// console.log(checkbox);
 	Camp.create(
 		{
 			title: title,

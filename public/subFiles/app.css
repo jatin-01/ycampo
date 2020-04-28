@@ -149,6 +149,8 @@ hr {
 	overflow: auto;
 	white-space: nowrap;
 	cursor: grab;
+	height: 300px;
+	padding: 30px;
 }
 .blog_bigbox::-webkit-scrollbar {
 	width: 0 !important;
@@ -162,14 +164,14 @@ hr {
 }
 .blog_textbox {
 	position: absolute;
-	color: white;
-	top: 70%;
-	padding-left: 10%;
-	padding-top: 10px;
-	opacity: 0;
+	background: rgba(0, 0, 0, 0.4);
+	top: 60%;
+	padding: 5px 0 5px 5px;
 	width: 100%;
-	height: 60px;
-	background-color: rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	font-size: 15px;
+	color: white;
+	left: 0;
 }
 .blog_box:hover .blog_textbox {
 	opacity: 1;
@@ -181,6 +183,9 @@ hr {
 }
 .blog_box:hover {
 	transform: scale(1.2);
-	overflow: hidden;
+	z-index: 1;
 	/* transition-duration: 0.8s; */
+}
+.blog_box:hover .blog_textbox span {
+	padding: 0 20px 0 20px;
 }
