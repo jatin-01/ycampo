@@ -3,7 +3,8 @@ let mongoose = require('mongoose'),
 
 let userSchema = mongoose.Schema({
 	username: String,
-	password: String
+	password: String,
+	isPaid: { type: Boolean, Default: false }
 });
 userSchema.plugin(passportLocalMongoose);
 let User = mongoose.model('User', userSchema);

@@ -12,6 +12,7 @@ let express = require('express'),
 	User = require('./models/user'),
 	Review = require('./models/review'),
 	flash = require('connect-flash');
+require('dotenv').config();
 //connecting to db
 mongoose.connect('mongodb://localhost/ycampo_app', {
 	useUnifiedTopology: true,
@@ -19,6 +20,10 @@ mongoose.connect('mongodb://localhost/ycampo_app', {
 	useCreateIndex: true,
 	useFindAndModify: false
 });
+// Set your secret key. Remember to switch to your live secret key in production!
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+const stripe = require('stripe')('process.env.STRIPE_SECRET_KEY');
+
 // seedDB();
 app.use(flash());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +41,7 @@ app.use(methodOverride('_method'));
 //telling express to use passport
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.json());
 //session data encode , read , decode
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -46,6 +52,50 @@ app.use(function(req, res, next) {
 	res.locals.error = req.flash('error');
 	res.locals.success = req.flash('success');
 	next();
+});
+//checkout route
+app.get('/ycampo/checkout', isLoggedIn, (req, res) => {
+	if (req.user.isPaid) {
+		req.flash('success', 'You have already completed the registration fee..');
+		return res.redirect('/ycampo/');
+	}
+	res.render('checkout', { amount: 2000 * 100 });
+});
+//pay post route
+app.post('/pay', isLoggedIn, async (req, res) => {
+	const { paymentMethodId, items, currency } = req.body;
+
+	const amount = 2000 * 100;
+
+	try {
+		// Create new PaymentIntent with a PaymentMethod ID from the client.
+		const intent = await stripe.paymentIntents.create({
+			amount,
+			currency,
+			payment_method: paymentMethodId,
+			error_on_requires_action: true,
+			confirm: true
+		});
+
+		console.log('💰 Payment received!');
+		// The payment is complete and the money has been moved
+		// You can add any post-payment code here (e.g. shipping, fulfillment, etc)
+		req.user.isPaid = true;
+		await req.user.save();
+
+		// Send the client secret to the client to use in the demo
+		res.send({ clientSecret: intent.client_secret });
+	} catch (e) {
+		// Handle "hard declines" e.g. insufficient funds, expired card, card authentication etc
+		// See https://stripe.com/docs/declines/codes for more
+		if (e.code === 'authentication_required') {
+			res.send({
+				error: 'This card requires authentication in order to proceeded. Please use a different card.'
+			});
+		} else {
+			res.send({ error: e.message });
+		}
+	}
 });
 //home route
 app.get('/', (req, res) => {
@@ -164,12 +214,13 @@ app.post('/ycampo/camp/:state', function(req, res) {
 	});
 });
 //new Route
-app.get('/ycampo/new', isLoggedIn, (req, res) => {
+app.get('/ycampo/new', isUserPaid, isLoggedIn, (req, res) => {
+	if (req.query.paid) res.locals.success = 'payment is done now you are good to go.... ';
 	res.render('new');
 });
 
 //create Route
-app.post('/ycampo', isLoggedIn, (req, res) => {
+app.post('/ycampo', isLoggedIn, isUserPaid, (req, res) => {
 	let title = req.body.title,
 		img1 = req.body.img1,
 		img2 = req.body.img2,
@@ -263,7 +314,7 @@ app.get('/ycampo/blog/:id', (req, res) => {
 	});
 });
 //EDIT CAMPGROUND
-app.get('/ycampo/:id/edit', checkAuthorization, function(req, res) {
+app.get('/ycampo/:id/edit', checkAuthorization, isUserPaid, function(req, res) {
 	Camp.findById(req.params.id, function(err, foundCampground) {
 		if (err) {
 			console.log(err);
@@ -427,6 +478,9 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	}
+	if (req['headers']['content-type'] === 'application/json') {
+		return res.send({ error: 'Need to login first' });
+	}
 	req.flash('error', 'You must have to Login');
 	res.redirect('/login');
 }
@@ -494,6 +548,11 @@ function checkReviewExistence(req, res, next) {
 		req.flash('error', 'You need to login first.');
 		res.redirect('back');
 	}
+}
+function isUserPaid(req, res, next) {
+	if (req.user.isPaid) return next();
+	req.flash('error', 'Please pay registration fee before adding new campground..!!');
+	res.redirect('/ycampo/checkout');
 }
 //comment post
 app.post('/ycampo/:id/comment', (req, res) => {
