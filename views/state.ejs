@@ -4,10 +4,10 @@
         <div class="col-lg-2">
             <div class="accordion" id="accordionExample">
                 <div class="card">
-                    <div class="card-header" id="headingOne">
+                    <div class="card-header newButton" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none; color: black;">
+                            <button class="btn btn-link newButtonText " type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne" >
                                 Pricing
                             </button>
                         </h2>
@@ -20,15 +20,15 @@
                                 <div class="d-block"><input type="radio" name="cost[value]" value="2"> <span>1501-2000</span></div>
                                 <div class="d-block"><input type="radio" name="cost[value]" value="3"> <span>2001-3000</span></div>
                                 <div class="d-block"><input type="radio" name="cost[value]" value="4"> <span>3001+</span></div>
-                                <button>save</button>
+                                <button class="btn btn-sm special_button">save</button>
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header" id="headingTwo">
+                    <div class="card-header newButton" id="headingTwo">
                         <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                                aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none; color: black;">
+                            <button class="btn btn-link collapsed newButtonText" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo" >
                                 Activities
                             </button>
                         </h2>
@@ -45,15 +45,15 @@
                                 <div class="d-block"><input type="radio" name="cost[value]" value="12"> <span>Campfire</span></div>
                                 <div class="d-block"><input type="radio" name="cost[value]" value="13"> <span>off-roading</span></div>
                                 <div class="d-block"><input type="radio" name="cost[value]" value="14"> <span>Boating</span></div>
-                                <button>save</button>
+                                <button  class="btn btn-sm special_button" >save</button>
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header" id="headingThree">
+                    <div class="card-header newButton" id="headingThree">
                         <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
-                                aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none; color: black;">
+                            <button class="btn btn-link collapsed newButtonText" type="button" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree">
                                 Amenities
                             </button>
                         </h2>
@@ -68,7 +68,7 @@
                             <div class="d-block"><input type="radio" name="cost[value]" value="20"> <span>Charging Points</span></div>
                             <div class="d-block"><input type="radio" name="cost[value]" value="21"> <span>Toilets</span></div>
                             <div class="d-block"><input type="radio" name="cost[value]" value="22"> <span>Picnic tables</span></div>
-                            <button>save</button>
+                            <button  class="btn btn-sm special_button">save</button>
                             </form>
                         </div>
                     </div>
@@ -84,11 +84,11 @@
                                     <img class="img-fluid rounded" src="<%=k.img1%>" alt="">
                                 </div>
                                 <div class="campground_text pl-3">
-                                    <h4 class="card-title"><%=k.title%> <span class="float-right d-block d-md-inline"><i
+                                    <h4 class="card-title"><%=k.title%> <span class="float-right d-block d-md-inline paisa"><i
                                                 class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                     <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                     <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                    <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a><% if (k.rating === 0) { %>
+                                    <a href="/ycampo/<%=k._id%>" class="btn btn-orange float-right mr-2">Read More</a><% if (k.rating === 0) { %>
                                     <em>No reviews yet.</em>
                                     <% } else { %>
                                     <span class="fa fa-star checked"></span>
@@ -109,7 +109,7 @@
                                                 class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                     <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                     <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                    <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">read more</a><% if (k.rating === 0) { %>
+                                    <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a><% if (k.rating === 0) { %>
                                     <em>No reviews yet.</em>
                                     <% } else { %>
                                     <span class="fa fa-star checked"></span>
@@ -130,7 +130,7 @@
                                                 class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                     <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                     <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                    <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a><% if (k.rating === 0) { %>
+                                    <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a><% if (k.rating === 0) { %>
                                     <em>No reviews yet.</em>
                                     <% } else { %>
                                     <span class="fa fa-star checked"></span>
@@ -151,7 +151,7 @@
                                                 class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                     <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                     <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                    <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a><% if (k.rating === 0) { %>
+                                    <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a><% if (k.rating === 0) { %>
                                     <em>No reviews yet.</em>
                                     <% } else { %>
                                     <span class="fa fa-star checked"></span>
@@ -172,7 +172,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -194,7 +194,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm oramge float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -216,7 +216,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -238,7 +238,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -260,7 +260,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -282,7 +282,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -304,7 +304,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -326,7 +326,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -348,7 +348,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -370,7 +370,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -392,7 +392,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -414,7 +414,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -436,7 +436,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -458,7 +458,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -480,7 +480,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -502,7 +502,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -524,7 +524,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -546,7 +546,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -573,7 +573,7 @@
                                         class="fas fa-rupee-sign"></i><%=item.price%></span></h4>
                             <p class="card-text"><%=item.desc.substring(0,50)%>....</p>
                             <p><i class="fas fa-map-marker-alt"></i> <%=item.city%> , <%=item.state%></p>
-                            <a href="/ycampo/<%=item._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                            <a href="/ycampo/<%=item._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                             <% if (item.rating === 0) { %>
                             <em>No reviews yet.</em>
                             <% } else { %>

@@ -15,7 +15,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/subFiles/app.css">
+    <link rel="stylesheet" type="text/css" href="/subFiles/form.css">
     <link href="https://fonts.googleapis.com/css?family=Changa&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/"><i class="fas fa-campground"></i>Ycampo</a>
+            <a class="navbar-brand" href="/"><i class="fas fa-campground"></i> Ycampo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -43,6 +43,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/ycampo/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Events</a>
                     </li>
                     <% if(currentUser){%>
                     <li class="nav-item">
@@ -60,7 +63,7 @@
                     </li>
                     <%} else {%>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"> <i class="fas fa-user"></i> Welcome - <%=currentUser.username%> </a>
+                        <a href="#" class="nav-link">Welcome - <%=currentUser.username%> </a>
                     </li>
                     <li class="nav-item">
                         <a href="/logout" class="nav-link">Logout</a>
@@ -71,12 +74,12 @@
         </div>
     </nav>
     <%if(error && error.length>0){%>
-    <div class="alert alert-danger set container pb-0 ">
-        <p><%=error%></p>
-    </div>
-    <%}%>
+                    <div class="alert alert-danger set container pb-0 ">
+                        <p><%=error%></p>
+                    </div>
+                    <%}%>
     <%if(success && success.length>0){%>
-    <div class="alert alert-success set container pb-0">
-        <p><%=success%></p>
-    </div>
-    <%}%>
+                    <div class="alert alert-success set container pb-0">
+                        <p><%=success%></p>
+                    </div>
+                    <%}%>

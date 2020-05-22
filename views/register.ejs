@@ -1,15 +1,16 @@
-<%-include("./partials/header") %>
-<div class="container set">
-    <form action="/register" method="POST">
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+<%-include("./partials/header1") %>
+<div class=" container set">
+    <section class="contactForm">
+        <div class="formData_new " style="font-family: 'Nunito', sans-serif;">
+            <form action="/register" method="POST"> 
+                <p id= "logo"><i class="fas fa-user-plus"></i></p>
+                <label for="userName" style="font-weight: 600; letter-spacing: 2px;">Username</label>
+                <input id="userName" type="text" name="username" placeholder="Enter Username">
+                <label for="password" style="font-weight: 600; letter-spacing: 2px;">Password</label>
+                <input id="password" type="password" name="password" placeholder="Enter password">
+                <button class="btn btn-lg w-100 special_button d-block" style="font-weight: 600;">Submit</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </section>
 </div>
 <%-include("./partials/footer") %>

@@ -9,18 +9,20 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/subFiles/landing.css">
-    <link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d2f801b43b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-        <div class="text-center landing_div">
-            <h1 class="display-4">WELCOME TO YCAMPO</h1>
-            <form action="/ycampo" mehtod="GET">
-                <div class="form-group">
-                    <input class="rounded-pill border-0"type="text" name="search" style="width: 300px; height: 40px; outline:none; " placeholder="   Quick Search....">
-                    <button class="btn btn-warning d-inline rounded-pill">Find Camps</button>
-                </div>
-            </form>
-            <a href="/ycampo" class="btn btn-warning mt-md-3 p-md-2">Get Your Campground</a>
+        <div class=" landing_div">
+            <h1 class="display-3">WELCOME TO YCAMPO</h1>
+            <div class="search-box">
+                <form action="/ycampo" mehtod="GET">
+                    <input type="text" name="search" class="search-txt" placeholder="   Quick Search...." aria-label="search">
+                    <button class="search-bar_submit "> <i class="fas fa-search" aria-label="submit search"></i></button>
+                </form>
+            </div>
+            <a href="/ycampo" class="btn btn-lg special_button mt-3 ml-2">Get Your Campground</a>
         </div>
         <ul class='background_imgs'>
             <li></li>
@@ -29,4 +31,3 @@
             <li></li>
             <li></li>
         </ul>
-<%-include("./partials/footer") %>

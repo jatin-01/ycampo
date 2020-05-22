@@ -1,6 +1,6 @@
 <%-include("./partials/header") %>
 <div class="container set">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div id="carouselExampleFade" class="carousel otherCarousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="<%=data.img1%>" class="d-block w-100 imgC img-fluid" alt="...">
@@ -25,18 +25,18 @@
 <div class="container-fluid set">
     <div class="row">
         <div class="col-lg-6 col-md-12">
-            <div class="box shadow p-3 mb-5 bg-white rounded">
+            <div class="box shadow p-3 mb-5 rounded">
                 <div class="title d-flex justify-content-between">
                     <h1 class="pb-2"><%=data.title%></h1>
-                    <h4><i class="fas fa-rupee-sign"></i> <span><%=data.price%></span></h4>
+                    <h4 class="mt-2 " style="color: #fe5000;"><i class="fas fa-rupee-sign" ></i> <span id="paisa"><%=data.price%></span></h4>
                 </div>
                 <div class="">
-                    <p><i class="fas fa-map-marker-alt"></i> <%=data.city%> , <%=data.state%></p>
+                    <p class="newFont"><i class="fas fa-map-marker-alt" style="color: #fe5000;"></i> <%=data.city%> , <%=data.state%></p>
                 </div>
-                <div class="">
+                <div class="newFont">
                     <p><%=data.activity%></p>
                 </div>
-                <div class="">
+                <div class=" newFont">
                     <p><strong>Known For : </strong><%=data.known%></p>
                 </div>
             </div>
@@ -52,7 +52,6 @@
                                 <th scope="col">Qty</th>
                                 <th scope="col">NOP</th>
                                 <th scope="col" style="font-size: 12px;">Guide <i class="fas fa-rupee-sign"></i>2000</th>
-                                <th scope="col">Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -72,7 +71,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-warning w-100">Booking</button>
+                    <button class="btn btn-block special_button w-100" style="font-weight:600;">Booking</button>
                 </form>
             </div>
         </div>
@@ -86,26 +85,17 @@
             </div>
             <div class="col-lg-8">
                 <div class="font-weight-light text-left" style="font-size:18px;" ><%=data.desc%><blockquote class="blockquote">
-                    <footer class="blockquote-footer">Made by <cite title="Source Title"><%=data.author.username%></cite></footer>
+                    <footer class="blockquote-footer" style="color: #fe5000;">Made by <cite title="Source Title"><%=data.author.username%></cite></footer>
                 </blockquote>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<div class="container d-flex justify-content-start align-items-center mt-2">
-    <%if(currentUser && data.author.id.equals(currentUser._id)){%>
-    <a href="/ycampo/<%=data._id%>/edit" class="btn btn-outline-warning px-4 mr-4 ml-5">EDIT</a>
-    <form action="/ycampo/<%=data.id%>?_method=DELETE" method="post">
-        <button class="btn btn-outline-danger px-4">DELETE</button>
-    </form>
-    <%}%>
-</div>
 <div class="container amenities p-5">
     <div class="row">
         <div class="col-lg-4">
-            <h3>Amenities :-</h3>
+            <h3>Amenities </h3>
         </div>
         <div class="col-lg-8">
             
@@ -154,7 +144,10 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container ">
+    <hr class="w-100">
+</div>
+<div class="container activities_color py-3">
     <div class="row">
         <div class="col-lg-4">
             <h3>Activities</h3>
@@ -189,16 +182,31 @@
     </div>
 </div>
 <div class="container">
+    <hr class="w-100">
+</div>
+<div class="container oactivities py-3">
     <div class="row">
         <div class="col-lg-4">
-            <h3>Other Activities :- </h3>
+            <h3>Other Activities </h3>
         </div>
         <div class="col-lg-8">
             <%=data.otherActivities%>
         </div>
     </div>
 </div>
-<div class="container set">
+<div class="container d-flex justify-content-start align-items-center mt-2">
+    <%if(currentUser && data.author.id.equals(currentUser._id)){%>
+        <h4>Want to edit or delete your campground <i class="fas fa-question"></i></h4>
+        <a href="/ycampo/<%=data._id%>/edit" class="btn btn-outline-warning px-4 mx-5 " style="margin-top:6rem">Edit Your Campground</a>
+        <form action="/ycampo/<%=data.id%>?_method=DELETE" method="post">
+        <button class="btn btn-outline-danger px-4 " style="margin-top:6rem">Delete It</button>
+    </form>
+    <%}%>
+</div>
+    <hr class="hr_style shadow p-1 " >
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<div class="container pt-3  review_section">
+    <h2>Review Section</h2>
     <!--Review section-->
     <div class="thumbnail">
         <div class="caption-full">
@@ -229,15 +237,17 @@
                     <div>Review by: <strong><%= review.author.username %></strong></div>
                     <span><em><%= review.updatedAt.toDateString() %></em></span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-7">
                     <p style="text-align: justify; word-wrap: break-word;">
                         <%= review.text %>
                     </p>
+                </div>
+                <div class="col-md-2">
                     <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
-                    <a class="btn btn-xs btn-warning" href="/ycampo/<%=data._id %>/review/<%=review._id %>/edit">Edit</a>
+                    <a class="btn btn-xs special_button" style="font-weight: 500;" href="/ycampo/<%=data._id %>/review/<%=review._id %>/edit">Edit</a>
                     <form id="delete-form" action="/ycampo/<%=data._id %>/review/<%=review._id %>?_method=DELETE"
                         method="POST">
-                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                        <input type="submit" class="btn btn-xs mt-1 red_warning"  value="Delete">
                     </form>
                     <% } %>
                 </div>
@@ -245,12 +255,12 @@
             <hr>
             <% }); %>
             <div style="margin-bottom: 10px;">
-                <h4><a href="/ycampo/<%= data._id %>/review"><i class="fa fa-search" aria-hidden="true"></i> See
+                <h4><a style="color: #fe5000;" href="/ycampo/<%= data._id %>/review"><i class="fa fa-search" aria-hidden="true"></i> See
                         all reviews</a></h4>
             </div>
             <% } %>
             <div>
-                <a class="btn btn-primary btn-lg <% if (currentUser && data.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>"
+                <a class="btn special_button btn-lg <% if (currentUser && data.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>"
                     href="/ycampo/<%= data._id %>/review/new">
                     Write a New Review</a>
             </div>
@@ -262,7 +272,7 @@
     <div>
         <div class="comment_box p-3 rounded">
             <div class="d-flex justify-content-end">
-                <a class="btn btn-success d-block w-25 comment_button " href="/ycampo/<%=data._id%>/comment/new">Add Comment</a>
+                <a class="btn special_button d-block w-25 comment_button " href="/ycampo/<%=data._id%>/comment/new">Add Comment</a>
             </div>
             <hr style="width:100%;">
             <% data.comments.forEach(function(comment){%>

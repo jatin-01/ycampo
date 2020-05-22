@@ -4,9 +4,9 @@
         <div class="col-lg-2">
             <div class="accordion" id="accordionExample">
                 <div class="card">
-                    <div class="card-header" id="headingOne">
+                    <div class="card-header newButton"  id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            <button class="btn btn-link newButtonText" type="button" data-toggle="collapse" data-target="#collapseOne"
                                 aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none; color: black;">
                                 Pricing
                             </button>
@@ -20,7 +20,7 @@
                                 <div class="d-block"><input type="radio" name="cost[value]" value="2"> <span>1501-2000</span></div>
                                 <div class="d-block"><input type="radio" name="cost[value]" value="3"> <span>2001-3000</span></div>
                                 <div class="d-block"><input type="radio" name="cost[value]" value="4"> <span>3001+</span></div>
-                                <button>save</button>
+                                <button class="btn btn-sm special_button">save</button>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -61,7 +61,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -83,7 +83,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -105,7 +105,7 @@
                                             class="fas fa-rupee-sign"></i><%=k.price%></span></h4>
                                 <p class="card-text"><%=k.desc.substring(0,50)%>....</p>
                                 <p><i class="fas fa-map-marker-alt"></i> <%=k.city%> , <%=k.state%></p>
-                                <a href="/ycampo/<%=k._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                <a href="/ycampo/<%=k._id%>" class="btn btn-sm orange float-right mr-2">Read More</a>
                                 <% if (k.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -139,7 +139,7 @@
                                             <span>,</span>
                                         <%}%>
                                     <%}%>
-                                    <a href="/ycampo/<%=camp[key]._id%>" class="btn btn-primary float-right mr-2">READ MORE</a>
+                                    <a href="/ycampo/<%=camp[key]._id%>" class="btn btn-sm orange float-right mr-2 mt-5">Read More</a>
                                     <div class="d-block">
                                         <% if (camp[key].rating === 0) { %>
                                         <em>No reviews yet.</em>

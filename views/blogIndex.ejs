@@ -1,26 +1,27 @@
 <%-include("./partials/header") %>
-<div class="container-fluid set">
-    <a class="btn btn-warning w-100" href="/ycampo/blog/new">Create Your blog</a>
-</div>
-<div class="container set">
-    <h1 class="display-4 font text-center">
+<a class="btn btn-sm  float-right mr-5 pt-3" href="/ycampo/blog/new"><i class="fas fa-plus-circle plus_button"></i></a>
+<div class="container border set shadow-lg p-3 mb-5 bg-white rounded">
+<div class="container">
+    <h1 class="display-4 font text-center pt-3">
         Journal 
     </h1>
+    <hr style= "margin: auto;">
 </div>
-<div class="container set ">
+<div class="container  set ">
     <div class="row">
         <% items.forEach((item)=>{%>
         <div class="col-md-12 col-lg-6">
             <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded" style="width: 32rem;">
                 <img src="<%=item.imgB%>" class="card-img-top card-imgSet2" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title"><%=item.titleB%></h5>
+                    <h5 class="card-title"><strong><%=item.titleB%></strong></h5>
                     <p class="card-text"><%=item.descB.substring(0,100)%></p>
-                    <a href="/ycampo/blog/<%=item._id %>" class="btn btn-primary">Go somewhere</a>
+                    <a href="/ycampo/blog/<%=item._id %>" class="btn btn-sm special_button">Read More</a>
                 </div>
             </div>
         </div>
         <%})%>
     </div>
+</div>
 </div>
 <%-include("./partials/footer") %>

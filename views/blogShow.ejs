@@ -1,35 +1,29 @@
 <%-include("./partials/header") %>
 <div class="container set">
-    <div class="blog_content">
         <div class="blog_img shadow  mb-5 bg-white rounded border ">
             <img src="<%=blog.imgB[0]%>" alt="Blog Image">
         </div>
-        <div class="container">
+        <div class="container border rounded shadow-sm p-3 mb-5 bg-white">
             <div class="blog_text">
-                <h1><%=blog.titleB%></h1>
+                <h1 class="pt-3"><%=blog.titleB%></h1>
+                <span class="d-block pl-1 pb-2" style="color:#6e7271;"><%= blog.createdAt.toDateString() %></span>
                 <hr>
-                <p class="font-weight-lighter text-center"><%=blog.descB%></p>
+                <p class="text-align-left"><%=blog.descB%></p>
             </div>
-            
+            <div class="row pt-5">
+                <div class="col-lg-6">
+                    <div class="blog_img1">
+                        <img class=" shadow-sm p-1 mb-5 bg-white rounded" src="<%=blog.imgB[1]%>" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="blog_img1">
+                        <img class=" shadow-sm p-1 mb-5 bg-white rounded" src="<%=blog.imgB[2]%>" alt="">
+                    </div>
+                </div>
+            </div>    
         </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="blog_img1">
-                <img class="rounded shadow-sm p-1 mb-5 bg-white rounded" src="<%=blog.imgB[1]%>" alt="">
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="blog_img1">
-                <img class="rounded shadow-sm p-1 mb-5 bg-white rounded" src="<%=blog.imgB[2]%>" alt="">
-            </div>
-        </div>
-    </div>
-    <div class="display-1">
-        <h1><%= blog.createdAt.toDateString() %></h1>
-    </div>
+        <a class="btn btn-lg special_button_back" href="/ycampo/blog">Go Back</a>
 </div>
 
 <%-include("./partials/footer") %>

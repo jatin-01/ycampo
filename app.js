@@ -227,7 +227,7 @@ app.post('/ycampo', isLoggedIn, isUserPaid, (req, res) => {
 		img3 = req.body.img3,
 		desc = req.body.desc,
 		state = req.body.state.toUpperCase(),
-		city = req.body.city,
+		city = req.body.city.toUpperCase(),
 		known = req.body.known.toUpperCase(),
 		otherActivities = req.body.otherActivities.toUpperCase(),
 		activity = req.body.activity.map((e) => e.toUpperCase()),
@@ -331,7 +331,7 @@ app.put('/ycampo/:id', checkAuthorization, function(req, res) {
 		img3 = req.body.img3,
 		desc = req.body.desc,
 		state = req.body.state.toUpperCase(),
-		city = req.body.city,
+		city = req.body.city.toUpperCase(),
 		known = req.body.known,
 		activity = req.body.activity.map((e) => e.toUpperCase()),
 		price = req.body.price;
@@ -405,7 +405,7 @@ app.get('/ycampo/:id', (req, res) => {
 		});
 });
 // Booking route
-app.post('/ycampo/:id/booking', function(req, res) {
+app.post('/ycampo/:id/booking', isLoggedIn, function(req, res) {
 	let booking = [
 		{ qnty: req.body.qty },
 		{
